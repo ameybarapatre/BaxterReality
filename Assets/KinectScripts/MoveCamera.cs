@@ -47,15 +47,25 @@ public class MoveCamera : MonoBehaviour
 			// Get mouse origin
 			mouseOrigin = Input.mousePosition;
 			isZooming = true;
+            Debug.Log(isZooming);
 		}
 		
 		// Disable movements on button release
 		if (!Input.GetMouseButton(0)) isRotating=false;
 		if (!Input.GetMouseButton(1)) isPanning=false;
 		if (!Input.GetMouseButton(2)) isZooming=false;
-		
-		// Rotate camera along X and Y axis
-		if (isRotating)
+
+        // Rotate camera along X and Y axis
+        if (isZooming)
+        {
+            Debug.Log("here");
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
+
+            Vector3 move = pos.y * zoomSpeed * transform.forward;
+
+            transform.Translate(move, Space.World);
+        }
+        if (isRotating)
 		{
 	        	Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
 
@@ -73,12 +83,6 @@ public class MoveCamera : MonoBehaviour
 		}
 		
 		// Move the camera linearly along Z axis
-		if (isZooming)
-		{
-	        	Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
-
-	        	Vector3 move = pos.y * zoomSpeed * transform.forward; 
-	        	transform.Translate(move, Space.World);
-		}
+		
 	}
 }

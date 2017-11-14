@@ -108,23 +108,39 @@ public class DepthView : MonoBehaviour
                 double avg = GetAvg(depthData, x, y, KinectWrapper.GetDepthWidth(), KinectWrapper.GetDepthHeight());
 
                 avg = avg * _DepthScale;
-
+                
                 _Vertices[smallIndex].z = (float)avg;
 
                 // Update UV mapping with CDRP
                 Vector2 colorSpacePoint = insta.GetColorMapPosForDepthPos(new Vector2(x,y));
                 Color32[] a = insta.getColor();
-                _Colors[smallIndex] = a[(int)(colorSpacePoint.y * KinectWrapper.Constants.ColorImageWidth + colorSpacePoint.x)];
+                
+                if ((float)avg < 45.0f)
+                {
+                    
+                    _Colors[smallIndex] = new Color(0f, 0f, 0f, 0f);
+                }
+                else if (!ShowTrueColors)
+                {
+                  
+
+                    _Colors[smallIndex] = new Color(255f, 255f, 255f, 1.0f);
+
+                }
+                else if (ShowTrueColors)
+                {
+                    _Colors[smallIndex] = a[(int)(colorSpacePoint.y * KinectWrapper.Constants.ColorImageWidth + colorSpacePoint.x)];
+
+                }
+
                 _UV[smallIndex] = new Vector2(colorSpacePoint.x / colorWidth, colorSpacePoint.y / colorHeight);
             }
         }
 
-        _Mesh.vertices = _Vertices;
+       _Mesh.vertices = _Vertices;
        _Mesh.uv = _UV;
-        if (ShowTrueColors)
-        {
-            _Mesh.colors = _Colors;
-        }
+       _Mesh.colors = _Colors;
+      
         //_Mesh.triangles = _Triangles;
         //_Mesh.RecalculateNormals();
     }

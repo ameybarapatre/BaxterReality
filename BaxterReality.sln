@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaxterReality", "BaxterReal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaxterReality.Editor.Plugins", "BaxterReality.Editor.Plugins.csproj", "{F6B495BA-29EF-B8BC-C37C-5F399219518A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaxterReality.Editor", "BaxterReality.Editor.csproj", "{C9E86971-FB60-C8AF-DA7E-7385D3108E14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{F6B495BA-29EF-B8BC-C37C-5F399219518A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6B495BA-29EF-B8BC-C37C-5F399219518A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6B495BA-29EF-B8BC-C37C-5F399219518A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E86971-FB60-C8AF-DA7E-7385D3108E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E86971-FB60-C8AF-DA7E-7385D3108E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E86971-FB60-C8AF-DA7E-7385D3108E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E86971-FB60-C8AF-DA7E-7385D3108E14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
