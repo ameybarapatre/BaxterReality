@@ -46,9 +46,9 @@ public class DepthView : MonoBehaviour
             {
                 int index = (y * width) + x;
                 _Indices[index] = index;
-                _Vertices[index] = new Vector3(x, -y, 0);
+                _Vertices[index] = new Vector3(-x, -y, 0);
                 _UV[index] = new Vector2(((float)x / (float)width), ((float)y / (float)height));
-                _Colors[index] = new Color(255f, 255f, 255f, 1.0f);
+                _Colors[index] = new Color(255f, 255f, 255f, 0.0f);
                 // Skip the last row/col
                 if (x != (width - 1) && y != (height - 1))
                 {
@@ -76,12 +76,7 @@ public class DepthView : MonoBehaviour
         _Mesh.colors = _Colors;
     }
 
-    void OnGUI()
-    {
-        GUI.BeginGroup(new Rect(0, 0, Screen.width, Screen.height));
-        GUI.TextField(new Rect(Screen.width - 250, 10, 250, 20), "DepthMode");
-        GUI.EndGroup();
-    }
+   
 
     void Update()
     {
